@@ -30,8 +30,11 @@ SRC = ./char.handling/ft_isalnum.c \
 	./char.handling/ft_tolower.c \
 	./char.handling/ft_toupper.c \
 	./conversions/ft_atoi.c \
+	./conversions/ft_atoi_base.c \
+	./conversions/ft_atol.c \
 	./conversions/ft_itoa.c \
 	./conversions/ft_putnbr_fd.c \
+	./conversions/binary.c \
 	./ft_printf/ft_printf.c \
 	./ft_printf/ft_putaddr.c \
 	./ft_printf/ft_putchar.c \
@@ -78,24 +81,26 @@ SRC = ./char.handling/ft_isalnum.c \
 	./string.handling/ft_strnstr.c \
 	./string.handling/ft_strrchr.c \
 	./string.handling/ft_strtrim.c \
-	./string.handling/ft_substr.c
+	./string.handling/ft_substr.c \
+	./string.handling/strjoin_minitalk.c
 
 OBJ = ${SRC:.c=.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "$(BLUE)	LIBFT COMPILED! 📖✅$(RESET)"
+	@echo "$(BLUE)	LIBFT COMPILED! 📖✅ $(RESET)"
 	@$(ARCHIVE) $(OBJ)
 RM = rm -f
 
 clean:
 	@$(RM) $(OBJ)
+	@echo "$(RED)	OBJS REMOVED $(RESET)"
 
 fclean: clean
 	@$(RM) */**/*.o
 	@$(RM) $(NAME)
-	@echo "$(RED)	LIBFT DESTROYED! 📖✅$(RESET)"
+	@echo "$(RED)	LIBFT DESTROYED! 🗑️ 🔴 $(RESET)"
 
 re: fclean all
 

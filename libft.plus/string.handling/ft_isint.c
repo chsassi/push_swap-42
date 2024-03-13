@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 18:55:27 by chsassi           #+#    #+#             */
-/*   Updated: 2024/02/28 17:37:19 by chsassi          ###   ########.fr       */
+/*   Created: 2024/03/13 19:44:41 by chsassi           #+#    #+#             */
+/*   Updated: 2024/03/13 19:44:45 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-int	xstrlen(char *str)
+#include "libft.h"
+
+int	ft_isint(char *str)
 {
-	size_t	i;
+	int i;
 
-	i = 0;
-	while (str && str[i])
-		i++;
-	return (i);
+	i = -1;
+	while (str && str[++i])
+	{
+		if (str[0] == '-' || (str[i] >= '0' && str[i] <= '9'))
+			return (1);
+	}
+	return (0);
 }

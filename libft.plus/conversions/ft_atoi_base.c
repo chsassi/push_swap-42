@@ -1,31 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 01:11:47 by chsassi           #+#    #+#             */
+/*   Created: 2024/02/28 17:37:09 by chsassi           #+#    #+#             */
 /*   Updated: 2024/02/28 17:37:19 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+static int	ft_power(int nb, int power)
 {
-	write(fd, s, xstrlen(s));
+	int	n;
+
+	n = nb;
+	if (power == 0)
+		return (1);
+	if (power < 0)
+		return (0);
+	if (power == 1)
+		return (nb);
+	if (power > 1)
+		n = n * ft_power(n, power - 1);
+	return (n);
 }
 
-/* int		main (void)
+int	ft_atoi_base(char *str, char *base)
 {
-	char *str = "Isso";
-	int fd = open("test.txt", O_WRONLY);
-	if (fd == -1)
+	int	n;
+	int	q;
+	int	r;
+	int	j;
+
+	n = 0;
+	r = 0;
+	j = strlen(str);
+	while (str[r] != '\0')
 	{
-		printf("Failure during opening\n");
-		return (1);
+		q = 0;
+		while (base[q])
+		{
+			if (str[r] == base[q])
+				n = n + (q * ft_power(2, (j - r - 1)));
+			q++;
+		}
+		r++;
 	}
-	ft_putstr_fd(s, fd);
-	close(fd);
+	return (n);
+}
+
+/* int	main()
+{
+	char	str[] = "00000010";
+	char	base[] = "01";
+	printf("%d", ft_atoi_base(str, base));
 } */

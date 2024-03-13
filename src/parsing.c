@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 18:55:27 by chsassi           #+#    #+#             */
-/*   Updated: 2024/02/28 17:37:19 by chsassi          ###   ########.fr       */
+/*   Created: 2024/03/13 19:16:28 by chsassi           #+#    #+#             */
+/*   Updated: 2024/03/13 19:16:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-int	xstrlen(char *str)
+#include "push_swap.h"
+
+int	control_alpha(char **mtx)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str && str[i])
-		i++;
-	return (i);
+	while (ft_isint(mtx[i]))
+	{
+		
+	}
+	return (1);
 }
+
+int	parse_args(int ac, char **av)
+{
+	char	**mtx;
+
+	if (ac == 2)
+	{
+		mtx = ft_split(av[1], ' ');
+		if (!control_alpha(mtx))
+		{
+			ft_printf("Error!\n");
+			return (0);
+		}
+		else
+			ft_atoi(mtx);
+	}
+}
+

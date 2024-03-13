@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 18:55:27 by chsassi           #+#    #+#             */
+/*   Created: 2024/02/20 13:06:52 by chsassi           #+#    #+#             */
 /*   Updated: 2024/02/28 17:37:19 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-int	xstrlen(char *str)
+#include "libft.h"
+
+long	ft_atol(const char *str)
 {
-	size_t	i;
+	int		i;
+	int		sign;
+	long	nl;
 
 	i = 0;
-	while (str && str[i])
+	sign = 1;
+	nl = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
-	return (i);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nl = nl * 10 + (str[i] - '0');
+		i++;
+	}
+	return (nl * sign);
 }

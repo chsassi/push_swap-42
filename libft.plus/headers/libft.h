@@ -12,6 +12,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include "ft_printf.h"
 # include "gnl.h"
 # include <stdio.h>
@@ -28,12 +29,27 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+typedef struct s_dll
+{
+	int				value;
+	int				index;
+	struct s_dll	*prev;
+	struct s_dll	*next;
+}	t_dll;
+
 /**
  * @brief Converts a string to an integer.
  * @param str a pointer to the string to be converted.
  * @return the converted integer value.
  */
 int		ft_atoi(const char *str);
+
+/**
+ * @brief Converts a string to an integer in any base.
+ * @param str a pointer to the string to be converted.
+ * @return the converted integer value.
+ */
+int		ft_atoi_base(char *str, char *base);
 
 /**
  * @brief Fills the memory with zero bytes.
