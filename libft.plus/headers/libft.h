@@ -37,6 +37,13 @@ typedef struct s_dll
 	struct s_dll	*next;
 }	t_dll;
 
+void	dll_add_back(t_dll **lst, t_dll *new);
+t_dll	*dll_iterate(t_dll *lst);
+t_dll	*dll_last(t_dll *lst);
+void	dll_clear(t_dll **lst);
+t_dll	*dll_new(int value);
+int		dll_size(t_dll *lst);
+
 /**
  * @brief Converts a string to an integer.
  * @param str a pointer to the string to be converted.
@@ -136,6 +143,8 @@ int		ft_isdigit(int c);
  * @return 1 if c is a printable character, otherwise returns 0.
  */
 int		ft_isprint(int c);
+
+int	ft_isint(char *str);
 
 /**
  * @brief Converts an integer to a string.

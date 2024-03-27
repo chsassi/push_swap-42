@@ -34,7 +34,6 @@ SRC = ./char.handling/ft_isalnum.c \
 	./conversions/ft_atol.c \
 	./conversions/ft_itoa.c \
 	./conversions/ft_putnbr_fd.c \
-	./conversions/binary.c \
 	./ft_printf/ft_printf.c \
 	./ft_printf/ft_putaddr.c \
 	./ft_printf/ft_putchar.c \
@@ -49,15 +48,21 @@ SRC = ./char.handling/ft_isalnum.c \
 	./ft_printf/ft_strlen.c \
 	./get_next_line/gnl.c \
 	./get_next_line/gnl_utils.c \
-	./list.handling/ft_lstadd_back.c \
-	./list.handling/ft_lstadd_front.c \
-	./list.handling/ft_lstclear.c \
-	./list.handling/ft_lstdelone.c \
-	./list.handling/ft_lstiter.c \
-	./list.handling/ft_lstlast.c \
-	./list.handling/ft_lstmap.c \
-	./list.handling/ft_lstnew.c \
-	./list.handling/ft_lstsize.c \
+	./list.handling/dll/dll_add_back.c \
+	./list.handling/dll/dll_clear.c \
+	./list.handling/dll/dll_iterate.c \
+	./list.handling/dll/dll_last.c \
+	./list.handling/dll/dll_new.c \
+	./list.handling/dll/dll_size.c \
+	./list.handling/ll/ft_lstadd_back.c \
+	./list.handling/ll/ft_lstadd_front.c \
+	./list.handling/ll/ft_lstclear.c \
+	./list.handling/ll/ft_lstdelone.c \
+	./list.handling/ll/ft_lstiter.c \
+	./list.handling/ll/ft_lstlast.c \
+	./list.handling/ll/ft_lstmap.c \
+	./list.handling/ll/ft_lstnew.c \
+	./list.handling/ll/ft_lstsize.c \
 	./matrix.handling/count_mtx_elements.c \
 	./matrix.handling/memory_management.c \
 	./matrix.handling/search.c \
@@ -68,6 +73,7 @@ SRC = ./char.handling/ft_isalnum.c \
 	./memory.handling/ft_memmove.c \
 	./memory.handling/ft_memset.c \
 	./string.handling/ft_bzero.c \
+	./string.handling/ft_isint.c \
 	./string.handling/ft_split.c \
 	./string.handling/ft_strchr.c \
 	./string.handling/ft_strdup.c \
@@ -81,8 +87,7 @@ SRC = ./char.handling/ft_isalnum.c \
 	./string.handling/ft_strnstr.c \
 	./string.handling/ft_strrchr.c \
 	./string.handling/ft_strtrim.c \
-	./string.handling/ft_substr.c \
-	./string.handling/strjoin_minitalk.c
+	./string.handling/ft_substr.c
 
 OBJ = ${SRC:.c=.o}
 

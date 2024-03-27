@@ -16,6 +16,7 @@ RESET=\033[0m
 
 SRC =   ./src/main.c \
 		./src/error_handling.c \
+		./src/parsing.c
 
 OBJ = $(SRC:.c=.o)
 

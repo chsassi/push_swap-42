@@ -14,7 +14,5 @@
 
 int	main(int ac, char **av)
 {
-	if (ac == 1)
-		exit(0);
-	
+	parse_args(ac, av);
 }
