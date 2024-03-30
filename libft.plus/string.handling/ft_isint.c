@@ -14,7 +14,7 @@
 
 int	ft_isint(char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str && str[++i])

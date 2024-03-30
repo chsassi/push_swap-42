@@ -79,7 +79,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
  * @param mtx matrix.
  * @return matrix copy.
  */
-char	**copy_mtx(char** mtx);
+char	**copy_mtx(char **mtx);
 
 /**
  * @brief Calculates cols in a matrix.
@@ -144,7 +144,7 @@ int		ft_isdigit(int c);
  */
 int		ft_isprint(int c);
 
-int	ft_isint(char *str);
+int		ft_isint(char *str);
 
 /**
  * @brief Converts an integer to a string.
