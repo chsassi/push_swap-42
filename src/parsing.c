@@ -16,6 +16,7 @@ t_dll	*get_dll(char **mtx, t_dll *ptr)
 {
 	t_dll	*lst;
 	int		i;
+	int		j;
 	int		nbr;
 
 	i = 0;
@@ -27,6 +28,13 @@ t_dll	*get_dll(char **mtx, t_dll *ptr)
 			return (dll_clear(&ptr), NULL);
 		dll_add_back(&ptr, lst);
 		i++;
+	}
+	lst = ptr;
+	while (lst)
+	{
+		if (j == lst->next->value)
+			return (0);
+		lst = lst->next;
 	}
 	return (lst);
 }
