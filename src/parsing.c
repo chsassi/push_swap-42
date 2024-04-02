@@ -24,10 +24,11 @@ t_dll	*get_list(char **mtx)
 		lst = dll_new(ft_atoi(mtx[i]));
 		if (!lst)
 			return (dll_clear(&head), NULL);
+		lst->index = i;
 		dll_add_back(&head, lst);
 		i++;
 	}
-	return (head);
+	return (free_mtx(mtx), head);
 }
 
 int	check_duplicates(char **mtx)
@@ -66,7 +67,7 @@ int	mtx_check(char **mtx)
 				if (!(mtx[i][j + 1] >= '0' && mtx[i][j + 1] <= '9'))
 					return (0);
 			}
-			else if (!(mtx[i][j] >= '0' && mtx[i][j] <= '9') || (mtx[i][j] != ' '))
+			else if (!(mtx[i][j] >= '0' && mtx[i][j] <= '9'))
 				return (0);
 			j++;
 		}
@@ -102,12 +103,12 @@ t_dll *parse_input_args(int ac, char **av)
 	(void)ac;
 
 	mtx = NULL;
-	head = NULL;
+	head = (t_dll *){0};
 	i = 0;
 	if (!mtx_check(av))
-		return (free_mtx(mtx), ft_printf("Error\n"), NULL);
-	mtx = (char **)malloc(sizeof(char *) * (ac - 1));
-	if (!mtx[i])
+		return (ft_printf("Error\n"), NULL);
+	mtx = ft_calloc(ac, sizeof(char *));
+	if (!mtx)
 		return (free_mtx(mtx), NULL);
 	while (av[i])
 	{
@@ -122,11 +123,14 @@ t_dll *parse_input_args(int ac, char **av)
 
 int	is_sorted(t_dll *list)
 {
-	while (list)
+	t_dll	*temp;
+
+	temp = list;
+	while (temp->next)
 	{
-		if (list->value > list->next->value)
+		if (temp->value > temp->next->value)
 			return (0);
-		list = list->next;
+		temp = temp->next;
 	}
-	return (1);
+	return (dll_clear(&list), 1);
 }

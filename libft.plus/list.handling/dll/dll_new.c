@@ -20,7 +20,6 @@ t_dll	*dll_new(int value)
 	if (!new)
 		return (NULL);
 	new->value = value;
-	new->index = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

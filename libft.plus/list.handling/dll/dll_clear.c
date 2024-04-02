@@ -17,7 +17,7 @@ void	dll_clear(t_dll **lst)
 {
 	t_dll	*ptr;
 
-	while (*lst)
+	while (lst && *lst)
 	{
 		ptr = (*lst)->next;
 		free(*lst);
