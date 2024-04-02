@@ -2,7 +2,7 @@ NAME = libft.a
 CC = cc
 HEADERS = ./headers
 CFLAGS = -Wall -Wextra -Werror -I$(HEADERS)
-COMPILE = $(CC) $(CFLAGS) -c 
+COMPILE = $(CC) $(CFLAGS) -c -g
 ARCHIVE = ar rc $(NAME)
 
 CHAR_HAND = ./char.handling

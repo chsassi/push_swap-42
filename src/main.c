@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 	if (ac == 1 || !av[1] || !av[1][0])
 		return (0);
 	if (ac == 2)
-		list = parse_input_string(ac, &av[1]);
+		list = parse_input_string(ac, av);
 	else if (ac > 2)
 		list = parse_input_args(ac, &av[1]);
 	if ((list && is_sorted(list)) || !list)

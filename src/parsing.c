@@ -80,8 +80,8 @@ int	mtx_check(char **mtx)
 
 t_dll	*parse_input_string(int ac, char **av)
 {
-	char	**mtx;
 	t_dll	*head;
+	char	**mtx;
 
 	head = (t_dll *){0};
 	(void)ac;
@@ -123,14 +123,14 @@ t_dll *parse_input_args(int ac, char **av)
 
 int	is_sorted(t_dll *list)
 {
-	t_dll	*temp;
+	t_dll	*tmp;
 
-	temp = list;
-	while (temp->next)
+	tmp = list;
+	while (tmp->next)
 	{
-		if (temp->value > temp->next->value)
+		if (tmp->value > tmp->next->value)
 			return (0);
-		temp = temp->next;
+		tmp = tmp->next;
 	}
 	return (dll_clear(&list), 1);
 }
