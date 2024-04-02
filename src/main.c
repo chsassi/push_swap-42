@@ -14,5 +14,17 @@
 
 int	main(int ac, char **av)
 {
-	parse_args(ac, av);
+	t_dll	*list;
+
+	list = NULL;
+	if (ac == 1 || !av[1] || !av[1][0])
+		return (0);
+	if (ac == 2)
+		list = parse_input_string(ac, av);
+	else if (ac > 2)
+		list = parse_input_args(ac, av);
+	if (!is_sorted(list))
+		return (0);
+
+	return (0);
 }

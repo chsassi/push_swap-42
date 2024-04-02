@@ -12,17 +12,16 @@
 
 #include "push_swap.h"
 
-t_dll	*get_list(char **mtx, t_dll *head)
+t_dll	*get_list(char **mtx)
 {
 	t_dll	*lst;
 	int		i;
-	int		nbr;
+	t_dll *head = NULL;
 
 	i = 0;
 	while (mtx && mtx[i])
 	{
-		nbr = ft_atoi(mtx[i]);
-		lst = dll_new(nbr);
+		lst = dll_new(ft_atoi(mtx[i]));
 		if (!lst)
 			return (dll_clear(&head), NULL);
 		dll_add_back(&head, lst);
@@ -65,10 +64,10 @@ int	mtx_check(char **mtx)
 			if (mtx[i][j] == '-' || mtx[i][j] == '+')
 			{
 				if (!(mtx[i][j + 1] >= '0' && mtx[i][j + 1] <= '9'))
-					return (free_mtx(mtx), 0);
+					return (0);
 			}
-			else if (!(mtx[i][j] >= '0' && mtx[i][j] <= '9'))
-				return (free_mtx(mtx), 0);
+			else if (!(mtx[i][j] >= '0' && mtx[i][j] <= '9') || (mtx[i][j] != ' '))
+				return (0);
 			j++;
 		}
 		i++;
@@ -78,23 +77,26 @@ int	mtx_check(char **mtx)
 	return (1);
 }
 
-int	parse_input_string(t_dll *head, int ac, char **av)
+t_dll	*parse_input_string(int ac, char **av)
 {
 	char	**mtx;
+	t_dll	*head;
+
+	head = (t_dll *){0};
 	(void)ac;
 
-	head = NULL;
 	mtx = ft_split(av[1], ' ');
 	if (!mtx || !mtx_check(mtx))
-		return (free_mtx(mtx), ft_printf("Error\n"), 0);
-	head = get_list(mtx, head);
+		return (free_mtx(mtx), ft_printf("Error\n"), NULL);
+	head = get_list(mtx);
 	if (!head)
-		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), 0);
-	return (1);
+		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), NULL);
+	return (head);
 }
 
-int	parse_input_args(t_dll *head, int ac, char **av)
+t_dll *parse_input_args(int ac, char **av)
 {
+	t_dll	*head;
 	char	**mtx;
 	int		i;
 	(void)ac;
@@ -103,33 +105,28 @@ int	parse_input_args(t_dll *head, int ac, char **av)
 	head = NULL;
 	i = 0;
 	if (!mtx_check(av))
-		return (free_mtx(mtx), ft_printf("Error\n"), 0);
+		return (free_mtx(mtx), ft_printf("Error\n"), NULL);
 	mtx = (char **)malloc(sizeof(char *) * (ac - 1));
 	if (!mtx[i])
-		return (free_mtx(mtx), 0);
+		return (free_mtx(mtx), NULL);
 	while (av[i])
 	{
 		mtx[i] = ft_strdup(av[i]);
-		if (!mtx[i])
-			return (free_mtx(mtx), 0);
 		i++;
 	}
-	head = get_list(mtx, head);
+	head = get_list(mtx);
 	if (!head)
-		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), 0);
-	return (1);
+		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), NULL);
+	return (head);
 }
 
-int	parse_args(int ac, char **av)
+int	is_sorted(t_dll *list)
 {
-	t_dll	head;
-
-	head = (t_dll){0};
-	if (ac == 1 || !av[1] || !av[1][0])
-		return (0);
-	if (ac == 2)
-		parse_input_string(&head, ac, av);
-	else if (ac > 2)
-		parse_input_string(&head, ac, av);
+	while (list)
+	{
+		if (list->value > list->next->value)
+			return (0);
+		list = list->next;
+	}
 	return (1);
 }

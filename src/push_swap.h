@@ -23,9 +23,11 @@ typedef enum e_error
 	INT_RANGE,
 }	t_error;
 
-t_dll	*get_list(char **mtx, t_dll *ptr);
+t_dll	*get_list(char **mtx);
+t_dll	*parse_input_string(int ac, char **av);
+t_dll	*parse_input_args(int ac, char **av);
 int		check_duplicates(char **mtx);
+int		is_sorted(t_dll *list);
 int		mtx_check(char **mtx);
-int		parse_args(int ac, char **av);
 
 # endif
