@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   dll_add_front.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 15:50:39 by chsassi           #+#    #+#             */
-/*   Updated: 2024/03/30 15:50:41 by chsassi          ###   ########.fr       */
+/*   Created: 2024/04/03 14:02:25 by chsassi           #+#    #+#             */
+/*   Updated: 2024/04/03 14:02:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "libft.h"
-# include <limits.h>
-
-typedef enum e_error
+void	dll_add_front(t_dll **lst, t_dll *new)
 {
-	NBR_NOT_FOUND,
-	DUPLICATES,
-	INT_RANGE,
-}	t_error;
-
-t_dll	*get_list(char **mtx);
-t_dll	*parse_input_string(int ac, char **av);
-t_dll	*parse_input_args(int ac, char **av);
-int		check_duplicates(char **mtx);
-int		is_sorted(t_dll *list);
-int		mtx_check(char **mtx);
-
-# endif
+	if (!lst || !(*lst) || !new)
+		return ;
+	new->next = *lst;
+	(*lst)->prev = new;
+	new->prev = NULL;
+	*lst = new;
+}

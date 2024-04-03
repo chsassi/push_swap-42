@@ -49,6 +49,7 @@ SRC = ./char.handling/ft_isalnum.c \
 	./get_next_line/gnl.c \
 	./get_next_line/gnl_utils.c \
 	./list.handling/dll/dll_add_back.c \
+	./list.handling/dll/dll_add_front.c \
 	./list.handling/dll/dll_clear.c \
 	./list.handling/dll/dll_iterate.c \
 	./list.handling/dll/dll_last.c \

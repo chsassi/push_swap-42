@@ -20,6 +20,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stddef.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <strings.h>
 
@@ -38,6 +39,7 @@ typedef struct s_dll
 }	t_dll;
 
 void	dll_add_back(t_dll **lst, t_dll *new);
+void	dll_add_front(t_dll **lst, t_dll *new);
 t_dll	*dll_iterate(t_dll *lst);
 t_dll	*dll_last(t_dll *lst);
 void	dll_clear(t_dll **lst);
