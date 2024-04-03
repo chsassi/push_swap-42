@@ -25,5 +25,5 @@ int	main(int ac, char **av)
 		list = parse_input_args(ac, &av[1]);
 	if ((list && is_sorted(list)) || !list)
 		return (0);
-	return (2);
+	return (0);
 }
