@@ -14,14 +14,10 @@
 
 t_dll	*rev_rotate_moves(t_dll *node1)
 {
-	t_dll	*node_end;
+	t_dll	*tmp;
 
-	node_end = dll_last(node1);
-	node_end->next = node1;
-	node1->prev = node_end;
-	node_end->prev = NULL;
-	node_end->prev->next = NULL;
-	node1 = node_end;
+	tmp = dll_last(node1);
+	dll_add_back(&node1, tmp);
 	return (node1);
 }
 

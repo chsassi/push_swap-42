@@ -14,7 +14,7 @@
 
 t_dll	*swap_moves(t_dll *node1)
 {
-	int		tmp;
+	int	tmp;
 
 	tmp = node1->value;
 	node1->value = node1->next->value;
@@ -28,7 +28,7 @@ t_dll	*ss(t_dll *stack_a, t_dll **stack_b, int flag)
 
 	if (flag == MOVE_A)
 	{
-		stack_res= swap_moves(stack_a);
+		stack_res = swap_moves(stack_a);
 		return (write(1, "sa\n", 3), stack_res);
 	}
 	else if (flag == MOVE_B)
