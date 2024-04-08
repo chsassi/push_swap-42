@@ -16,6 +16,7 @@ RESET=\033[0m
 
 SRC =   ./src/main.c \
 		./src/parsing.c \
+		./src/algo.c \
 		./src/moves/swap.c \
 		./src/moves/push.c \
 		./src/moves/rotate.c \
