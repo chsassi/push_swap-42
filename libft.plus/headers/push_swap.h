@@ -27,33 +27,37 @@ typedef enum e_moves
 	SWAP
 }	t_moves;
 
+/* Algo */
+
+int		solve3(t_dll *pStack);
+int		solve4(t_dll *pStack);
+int		check5(t_dll *pStack);
+void	solve5(t_dll *list);
 
 /* Parsing */
 
-t_dll	*get_list(char **mtx);
+t_dll	*get_list_head(char **mtx);
 t_dll	*parse_input_string(int ac, char **av);
 t_dll	*parse_input_args(int ac, char **av);
+
+/* Utils */
+
 int		check_duplicates(char **mtx);
 int		is_sorted(t_dll *list);
 int		mtx_check(char **mtx);
 
-/* Algo */
-
-int	check5(t_dll *list);
-void	solve5(t_dll *list);
-
 /* Moves */
 
-t_dll	*swap_moves(t_dll *node1);
-t_dll	*ss(t_dll *stack_a, t_dll **stack_b, int flag);
+t_dll	*swap_op(t_dll *node1);
+t_dll	*swap(t_dll *stack_a, t_dll **stack_b, int flag);
 
-t_dll	*rotate_moves(t_dll *node1);
-t_dll	*rr(t_dll *stack_a, t_dll **stack_b, int flag);
+t_dll	*rotate_op(t_dll *node1);
+t_dll	*rotate(t_dll *stack_a, t_dll **stack_b, int flag);
 
-t_dll	*rev_rotate_moves(t_dll *node1);
-t_dll	*rrr(t_dll *stack_a, t_dll **stack_b, int flag);
+t_dll	*rev_rotate_op(t_dll *node1);
+t_dll	*rev_rotate(t_dll *stack_a, t_dll **stack_b, int flag);
 
 t_dll	*pa(t_dll *stack_a, t_dll **stack_b);
 t_dll	*pb(t_dll *stack_b, t_dll **stack_a);
 
-# endif
+#endif

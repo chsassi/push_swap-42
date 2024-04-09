@@ -12,70 +12,24 @@
 
 #include "push_swap.h"
 
-t_dll	*get_list(char **mtx)
+t_dll	*get_list_head(char **mtx)
 {
-	t_dll	*lst;
+	t_dll	*list;
+	t_dll	*head;
 	int		i;
-	t_dll *head = NULL;
 
+	head = NULL;
 	i = 0;
 	while (mtx && mtx[i])
 	{
-		lst = dll_new(ft_atoi(mtx[i]));
-		if (!lst)
+		list = dll_new(ft_atoi(mtx[i]));
+		if (!list)
 			return (dll_clear(&head), NULL);
-		lst->index = i;
-		dll_add_back(&head, lst);
+		list->index = i;
+		dll_add_back(&head, list);
 		i++;
 	}
 	return (free_mtx(mtx), head);
-}
-
-int	check_duplicates(char **mtx)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (mtx && mtx[i])
-	{
-		j = i + 1;
-		while (mtx[j])
-		{
-			if (!ft_strncmp(mtx[i], mtx[j], 12))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	mtx_check(char **mtx)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (mtx && mtx[i])
-	{
-		j = 0;
-		while (mtx[i][j])
-		{
-			if (mtx[i][j] == '-' || mtx[i][j] == '+')
-			{
-				if (!(mtx[i][j + 1] >= '0' && mtx[i][j + 1] <= '9'))
-					return (0);
-			}
-			else if (!(mtx[i][j] >= '0' && mtx[i][j] <= '9'))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	if (!check_duplicates(mtx))
-		return (0);
-	return (1);
 }
 
 t_dll	*parse_input_string(int ac, char **av)
@@ -83,27 +37,26 @@ t_dll	*parse_input_string(int ac, char **av)
 	t_dll	*head;
 	char	**mtx;
 
-	head = (t_dll *){0};
 	(void)ac;
-
+	head = (t_dll *){0};
 	mtx = ft_split(av[1], ' ');
 	if (!mtx || !mtx_check(mtx))
 		return (free_mtx(mtx), ft_printf("Error\n"), NULL);
-	head = get_list(mtx);
+	head = get_list_head(mtx);
 	if (!head)
 		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), NULL);
 	return (head);
 }
 
-t_dll *parse_input_args(int ac, char **av)
+t_dll	*parse_input_args(int ac, char **av)
 {
 	t_dll	*head;
 	char	**mtx;
 	int		i;
-	(void)ac;
 
-	mtx = NULL;
+	(void)ac;
 	head = (t_dll *){0};
+	mtx = NULL;
 	i = 0;
 	if (!mtx_check(av))
 		return (ft_printf("Error\n"), NULL);
@@ -115,22 +68,8 @@ t_dll *parse_input_args(int ac, char **av)
 		mtx[i] = ft_strdup(av[i]);
 		i++;
 	}
-	head = get_list(mtx);
+	head = get_list_head(mtx);
 	if (!head)
 		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), NULL);
 	return (head);
-}
-
-int	is_sorted(t_dll *list)
-{
-	t_dll	*tmp;
-
-	tmp = list;
-	while (tmp->next)
-	{
-		if (tmp->value > tmp->next->value)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (dll_clear(&list), 1);
 }

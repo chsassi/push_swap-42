@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_dll	*swap_moves(t_dll *node1)
+t_dll	*swap_op(t_dll *node1)
 {
 	int	tmp;
 
@@ -22,7 +22,7 @@ t_dll	*swap_moves(t_dll *node1)
 	return (node1);
 }
 
-t_dll	*ss(t_dll *stack_a, t_dll **stack_b, int flag)
+t_dll	*swap(t_dll *stack_a, t_dll **stack_b, int flag)
 {
 	t_dll	*stack_res;
 
@@ -40,6 +40,7 @@ t_dll	*ss(t_dll *stack_a, t_dll **stack_b, int flag)
 	{
 		stack_a = swap_moves(stack_a);
 		*stack_b = swap_moves(*stack_b);
+		return (write(1, "ss\n", 3), stack_a);
 	}
-	return (write(1, "ss\n", 3), stack_a);
+	return (0);
 }
