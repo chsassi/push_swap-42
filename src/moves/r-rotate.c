@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_dll	*rev_rotate_op(t_dll *node1)
+t_dll	*r_rotate_op(t_dll *node1)
 {
 	t_dll	*tmp;
 
@@ -21,24 +21,24 @@ t_dll	*rev_rotate_op(t_dll *node1)
 	return (node1);
 }
 
-t_dll	*rev_rotate(t_dll *stack_a, t_dll **stack_b, int flag)
+t_dll	*r_rotate(t_dll *stack_a, t_dll **stack_b, int flag)
 {
 	t_dll	*stack_res;
 
 	if (flag == MOVE_A)
 	{
-		stack_res = rev_rotate_moves(stack_a);
+		stack_res = r_rotate_op(stack_a);
 		return (write(1, "rra\n", 4), stack_res);
 	}
 	else if (flag == MOVE_B)
 	{
-		stack_res = rev_rotate_moves(*stack_b);
+		stack_res = r_rotate_op(*stack_b);
 		return (write(1, "rrb\n", 4), stack_res);
 	}
 	else if (flag == MOVE_BOTH)
 	{
-		stack_a = rev_rotate_moves(stack_a);
-		*stack_b = rev_rotate_moves(*stack_b);
+		stack_a = r_rotate_op(stack_a);
+		*stack_b = r_rotate_op(*stack_b);
 		return (write(1, "rrr\n", 4), stack_a);
 	}
 	return (0);

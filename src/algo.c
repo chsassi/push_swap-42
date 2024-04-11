@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	solve3(t_dll *pStack)
+t_dll	*solve_3(t_dll *pStack)
 {
 	if (pStack->value > pStack->next->value)
 	{
@@ -32,41 +32,44 @@ int	solve3(t_dll *pStack)
 			rotate(pStack, NULL, MOVE_A);
 		}
 		else
-			rev_rotate(pStack, NULL, MOVE_A);
+			r_rotate(pStack, NULL, MOVE_A);
 	}
-	return (0);
+	return (pStack);
 }
 
-int	solve4(t_dll *pStack_a, t_dll *pStack_b)
+t_dll	*solve_4(t_dll *pStack)
 {
 	t_dll	*tmp;
+	t_dll	*stack_b;
+	int		i;
 
-	tmp = dll_last(pStack_a);
-	find_min(pStack_a);
-	if (pStack_a->value > pStack_a->next->value && pStack_a->value > tmp->value)
+	stack_b = (t_dll *){0};
+	tmp = dll_last(pStack);
+	i = find_min(pStack);
+	if (i > 1)
 	{
-		if (pStack_a->next->value > pStack_a->next->next->value)
+		i = 4 - i;
+		while (i > 0)
 		{
-			rotate(pStack_a, NULL, MOVE_A);
-			swap(pStack_a, NULL, MOVE_A);
+			r_rotate(pStack, NULL, MOVE_A);
+			i--;
 		}
-		else
-			rotate(pStack_a, NULL, MOVE_A);
 	}
-	else if (pStack_a->value < pStack_a->next->value && pStack_a->value > tmp->value)
+	else
 	{
-		if (pStack_a->next->value > pStack_a->next->next->value)
+		while (i <= 0)
 		{
-			ss(pStack_a, NULL, MOVE_A);
-			rr(pStack_a, NULL, MOVE_A);
+			rotate(pStack, NULL, MOVE_A);
+			i++;
 		}
-		else
-			rrr(pStack_a, NULL, MOVE_A);
 	}
+	pa(pStack, &stack_b);
+	pStack = solve_3(pStack);
+	pb(stack_b, &pStack);
 	return (0);
 }
 
-int	check5(t_dll *pStack)
+int	check_5(t_dll *pStack)
 {
 	t_dll	*tmp;
 
@@ -76,7 +79,7 @@ int	check5(t_dll *pStack)
 		if (pStack->next->value > tmp->value)
 			return (SWAP);
 		else
-			return (REV_ROTATE);
+			return (R_ROTATE);
 	}
 	else if (pStack->value > pStack->next->value && pStack->value < tmp->value)
 		return (ROTATE);
@@ -87,7 +90,7 @@ int	check5(t_dll *pStack)
 	return (0);
 }
 
-void	solve5(t_dll *list)
+void	solve_5(t_dll *list)
 {
 	t_dll	*stack_a;
 	t_dll	*stack_b;

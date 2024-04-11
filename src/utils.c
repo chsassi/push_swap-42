@@ -52,18 +52,18 @@ int	find_min(t_dll *pStack)
 	return (i);
 }
 
-int	is_sorted(t_dll *list)
+int	is_sorted(t_dll *pStack)
 {
 	t_dll	*tmp;
 
-	tmp = list;
+	tmp = pStack;
 	while (tmp->next)
 	{
 		if (tmp->value > tmp->next->value)
 			return (0);
 		tmp = tmp->next;
 	}
-	return (dll_clear(&list), 1);
+	return (dll_clear(&pStack), 1);
 }
 
 int	mtx_check(char **mtx)
