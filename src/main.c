@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+/* int	main(int ac, char **av)
 {
 	t_dll	*list;
 
@@ -26,4 +26,35 @@ int	main(int ac, char **av)
 	if ((list && is_sorted(list)) || !list)
 		return (0);
 	return (0);
+} */
+
+int main()
+{
+	t_dll *head;
+	t_dll *n1;
+	t_dll *n2;
+	t_dll *n3;
+	t_dll *n4;
+	t_dll *n5;
+
+	head = NULL;
+
+	n1 = dll_new(10);
+	dll_add_back(&head, n1);
+	n2 = dll_new(2);
+	dll_add_back(&head, n2);
+	n3 = dll_new(5);
+	dll_add_back(&head, n3);
+	n4 = dll_new(-1);
+	dll_add_back(&head, n4);
+	n5 = dll_new(8);
+	dll_add_back(&head, n5);
+	//head = solve_5(head);
+/* 	int i = 0;
+	while (i < 5)
+	{
+		printf("%i\n", head->value);
+		i++;
+	} */
+	printf("%i", find_min(head));
 }

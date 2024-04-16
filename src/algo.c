@@ -63,40 +63,40 @@ t_dll	*solve_4(t_dll *pStack)
 			i++;
 		}
 	}
-	pa(pStack, &stack_b);
-	pStack = solve_3(pStack);
 	pb(stack_b, &pStack);
-	return (0);
+	pStack = solve_3(pStack);
+	pa(pStack, &stack_b);
+	return (pStack);
 }
 
-int	check_5(t_dll *pStack)
+t_dll	*solve_5(t_dll *pStack)
 {
 	t_dll	*tmp;
-
-	tmp = dll_last(pStack);
-	if (pStack->value > pStack->next->value && pStack->value > tmp->value)
-	{
-		if (pStack->next->value > tmp->value)
-			return (SWAP);
-		else
-			return (R_ROTATE);
-	}
-	else if (pStack->value > pStack->next->value && pStack->value < tmp->value)
-		return (ROTATE);
-	else if (pStack->value < pStack->next->value && pStack->value > tmp->value)
-		return (SWAP);
-	else if (pStack->value < pStack->next->value && pStack->value < tmp->value)
-		return (PUSH);
-	return (0);
-}
-
-void	solve_5(t_dll *list)
-{
-	t_dll	*stack_a;
 	t_dll	*stack_b;
+	int		i;
 
-	stack_a = dll_last(list);
-	stack_b = NULL;
-	if (!stack_a || !stack_b)
-		return ;
+	i = find_min(pStack);
+	tmp = dll_last(pStack);
+	stack_b = (t_dll *){0};
+	if (i > 2)
+	{
+		i = 5 - i;
+		while (i > 0)
+		{
+			r_rotate(pStack, NULL, MOVE_A);
+			i--;
+		}
+	}
+	else
+	{
+		while (i <= 0)
+		{
+			rotate(pStack, NULL, MOVE_A);
+			i++;
+		}
+	}
+	pb(stack_b, &pStack);
+	pStack = solve_4(pStack);
+	pa(pStack, &stack_b);
+	return (pStack);
 }

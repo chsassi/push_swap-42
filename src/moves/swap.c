@@ -28,18 +28,18 @@ t_dll	*swap(t_dll *stack_a, t_dll **stack_b, int flag)
 
 	if (flag == MOVE_A)
 	{
-		stack_res = swap_moves(stack_a);
+		stack_res = swap_op(stack_a);
 		return (write(1, "sa\n", 3), stack_res);
 	}
 	else if (flag == MOVE_B)
 	{
-		stack_res = swap_moves(*stack_b);
+		stack_res = swap_op(*stack_b);
 		return (write(1, "sb\n", 3), stack_res);
 	}
 	else if (flag == MOVE_BOTH)
 	{
-		stack_a = swap_moves(stack_a);
-		*stack_b = swap_moves(*stack_b);
+		stack_a = swap_op(stack_a);
+		*stack_b = swap_op(*stack_b);
 		return (write(1, "ss\n", 3), stack_a);
 	}
 	return (0);

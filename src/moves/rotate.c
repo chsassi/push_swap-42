@@ -29,18 +29,18 @@ t_dll	*rotate(t_dll *stack_a, t_dll **stack_b, int flag)
 
 	if (flag == MOVE_A)
 	{
-		stack_res = rotate_moves(stack_a);
+		stack_res = rotate_op(stack_a);
 		return (write(1, "ra\n", 3), stack_res);
 	}
 	else if (flag == MOVE_B)
 	{
-		stack_res = rotate_moves(*stack_b);
+		stack_res = rotate_op(*stack_b);
 		return (write(1, "rb\n", 3), stack_res);
 	}
 	else if (flag == MOVE_BOTH)
 	{
-		stack_a = rotate_moves(stack_a);
-		*stack_b = rotate_moves(*stack_b);
+		stack_a = rotate_op(stack_a);
+		*stack_b = rotate_op(*stack_b);
 	}
 	return (write(1, "rr\n", 3), stack_a);
 }

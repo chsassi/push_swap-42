@@ -31,8 +31,7 @@ typedef enum e_moves
 
 t_dll	*solve_3(t_dll *pStack);
 t_dll	*solve_4(t_dll *pStack);
-int		check_5(t_dll *pStack);
-void	solve_5(t_dll *pStack);
+t_dll	*solve_5(t_dll *pStack);
 
 /* Parsing */
 
@@ -44,6 +43,7 @@ t_dll	*parse_input_args(int ac, char **av);
 
 int		check_duplicates(char **mtx);
 int		find_min(t_dll *pStack);
+int		find_max(t_dll *pStack);
 int		is_sorted(t_dll *pStack);
 int		mtx_check(char **mtx);
 
