@@ -42,8 +42,9 @@ t_dll	*parse_input_args(int ac, char **av);
 /* Utils */
 
 int		check_duplicates(char **mtx);
-int		find_min(t_dll *pStack);
-int		find_max(t_dll *pStack);
+int		find_min_index(t_dll *pStack);
+int		find_min_value(t_dll *pStack);
+int		find_max_index(t_dll *pStack);
 int		is_sorted(t_dll *pStack);
 int		mtx_check(char **mtx);
 

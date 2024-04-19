@@ -17,7 +17,9 @@ t_dll	*r_rotate_op(t_dll *node1)
 	t_dll	*tmp;
 
 	tmp = dll_last(node1);
-	dll_add_back(&node1, tmp);
+	tmp->next = node1;
+	tmp->prev = NULL;
+	node1 = tmp;
 	return (node1);
 }
 

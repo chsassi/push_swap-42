@@ -16,10 +16,10 @@ t_dll	*rotate_op(t_dll *node1)
 {
 	t_dll	*tmp;
 
-	tmp = node1->next;
-	dll_add_back(&tmp, node1);
-	tmp->prev = NULL;
-	node1 = tmp;
+	tmp = node1;
+	node1 = node1->next;
+	node1->prev = NULL;
+	dll_add_back(&node1, tmp);
 	return (node1);
 }
 

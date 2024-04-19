@@ -33,27 +33,44 @@ int	check_duplicates(char **mtx)
 	return (1);
 }
 
-// int	find_min(t_dll *pStack)
-// {
-// 	t_dll	*tmp;
-// 	t_dll	*tmp2;
-// 	int		i;
+int	find_min_index(t_dll *pStack)
+{
+	t_dll	*tmp;
+	t_dll	*tmp2;
+	int		i;
 
-// 	tmp = pStack;
-// 	tmp2 = pStack->next;
-// 	while (tmp2)
-// 	{
-// 		if (tmp->value > tmp2->value)
-// 		{
-// 			i = tmp2->index;
-// 			tmp = tmp2;
-// 		}
-// 		tmp2 = tmp2->next;
-// 	}
-// 	return (i);
-// }
+	tmp = pStack;
+	tmp2 = pStack->next;
+	while (tmp2)
+	{
+		if (tmp->value > tmp2->value)
+		{
+			i = tmp2->index;
+			tmp = tmp2;
+		}
+		tmp2 = tmp2->next;
+	}
+	return (i);
+}
 
-int	find_max(t_dll *pStack)
+int	find_min_value(t_dll *pStack)
+{
+	int		min = INT_MAX;
+	int		i;
+	t_dll	*ptr;
+
+	i = 0;
+	ptr = pStack;
+	while(ptr)
+	{
+		if(ptr->value < min)
+			min = ptr->value;
+		ptr = ptr->next;
+	}
+	return (min);
+}
+
+int	find_max_index(t_dll *pStack)
 {
 	t_dll	*tmp;
 	t_dll	*tmp2;
@@ -105,6 +122,8 @@ int	mtx_check(char **mtx)
 			}
 			else if (!(mtx[i][j] >= '0' && mtx[i][j] <= '9'))
 				return (0);
+			if (mtx[i][j] == '-' || mtx[i][j] == '+')
+				return (0);
 			j++;
 		}
 		i++;
@@ -112,21 +131,4 @@ int	mtx_check(char **mtx)
 	if (!check_duplicates(mtx))
 		return (0);
 	return (1);
-}
-
-int find_min(t_dll *pStack)
-{
-	int min = INT_MAX;
-	int i;
-	t_dll *ptr;
-
-	i = 0;
-	ptr = pStack;
-	while(ptr)
-	{
-		if(ptr->value < min)
-			min = ptr->value;
-		ptr = ptr->next;
-	}
-	return (min);
 }
