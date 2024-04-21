@@ -14,7 +14,7 @@
 
 t_dll	*solve_3(t_dll *pStack)
 {
-	if (pStack->value > pStack->next->value)
+	if (!(is_sorted(pStack)) && pStack->value > pStack->next->value)
 	{
 		if (pStack->next->value > pStack->next->next->value)
 		{
@@ -24,7 +24,7 @@ t_dll	*solve_3(t_dll *pStack)
 		else
 			pStack = rotate(pStack, NULL, MOVE_A);
 	}
-	else if (pStack->value < pStack->next->value)
+	else if (!(is_sorted(pStack)) && pStack->value < pStack->next->value)
 	{
 		if (pStack->value < pStack->next->next->value)
 		{
@@ -63,7 +63,9 @@ t_dll	*solve_4(t_dll *pStack)
 			i++;
 		}
 	}
-	pStack = pb(stack_b, &pStack);
+	if (is_sorted(pStack))
+		return (pStack);
+	stack_b = pb(stack_b, &pStack);
 	pStack = solve_3(pStack);
 	pStack = pa(pStack, &stack_b);
 	return (pStack);

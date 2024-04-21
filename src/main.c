@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		list = parse_input_string(ac, av);
 	else if (ac > 2)
 		list = parse_input_args(ac, &av[1]);
-	if ((list && is_sorted(list)) || !list)
+	if ((list && is_sorted(list) == SORTED) || !list)
 		return (0);
 	len = dll_size(list);
 	if (len == 3)

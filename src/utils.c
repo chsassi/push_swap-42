@@ -101,7 +101,7 @@ int	is_sorted(t_dll *pStack)
 			return (0);
 		tmp = tmp->next;
 	}
-	return (dll_clear(&pStack), 1);
+	return (1);
 }
 
 int	mtx_check(char **mtx)
