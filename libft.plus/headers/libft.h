@@ -45,6 +45,11 @@ t_dll	*dll_last(t_dll *lst);
 void	dll_clear(t_dll **lst);
 t_dll	*dll_new(int value);
 int		dll_size(t_dll *lst);
+int		find_min_index(t_dll *pStack);
+int		find_min_value(t_dll *pStack);
+int		find_max_index(t_dll *pStack);
+int		find_max_value(t_dll *pStack);
+void	set_index(t_dll **list);
 
 /**
  * @brief Converts a string to an integer.

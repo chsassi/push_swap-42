@@ -55,6 +55,8 @@ SRC = ./char.handling/ft_isalnum.c \
 	./list.handling/dll/dll_last.c \
 	./list.handling/dll/dll_new.c \
 	./list.handling/dll/dll_size.c \
+	./list.handling/dll/dll_set_index.c \
+	./list.handling/dll/finders.c \
 	./list.handling/ll/ft_lstadd_back.c \
 	./list.handling/ll/ft_lstadd_front.c \
 	./list.handling/ll/ft_lstclear.c \

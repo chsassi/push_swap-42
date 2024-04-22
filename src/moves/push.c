@@ -12,26 +12,27 @@
 
 #include "push_swap.h"
 
-t_dll	*pa(t_dll *stack_a, t_dll **stack_b)
+void	pa(t_dll **stack_a, t_dll **stack_b)
 {
-	t_dll	tmp;
+	t_dll	*b_tmp;
 
-	tmp = **stack_b;
-	dll_add_front(&stack_a, &tmp);
-	(*stack_b) = (*stack_b)->next;
-	(*stack_b)->prev = NULL;
-	write(1, "pb\n", 3);
-	return (stack_a);
+	b_tmp = *stack_b;
+	dll_add_front(stack_a, *stack_b);
+	b_tmp->prev = NULL;
+	b_tmp = b_tmp->next;
+	*stack_b = b_tmp;
+	set_index(stack_b);
+	write(1, "pa\n", 3);
 }
 
-t_dll	*pb(t_dll *stack_b, t_dll **stack_a)
+void	pb(t_dll **stack_b, t_dll **stack_a)
 {
-	t_dll	tmp;
+	t_dll	*a_tmp;
 
-	tmp = **stack_a;
-	dll_add_front(&stack_b, &tmp);
-	(*stack_a) = (*stack_a)->next;
-	(*stack_a)->prev = NULL;
+	a_tmp = (*stack_a)->next;
+	dll_add_front(stack_b, *stack_a);
+	a_tmp->prev = NULL;
+	*stack_a = a_tmp;
+	set_index(stack_a);
 	write(1, "pb\n", 3);
-	return (stack_b);
 }

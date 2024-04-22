@@ -15,24 +15,27 @@
 int	main(int ac, char **av)
 {
 	t_dll	*list;
+	t_dll	*stack_b;
 	int		len;
 
 	list = NULL;
+	stack_b = (t_dll *){0};
 	if (ac == 1 || !av[1] || !av[1][0])
 		return (0);
 	if (ac == 2)
 		list = parse_input_string(ac, av);
 	else if (ac > 2)
 		list = parse_input_args(ac, &av[1]);
-	if ((list && is_sorted(list) == SORTED) || !list)
+	if ((list && is_sorted(list)) || !list)
 		return (0);
 	len = dll_size(list);
 	if (len == 3)
-		solve_3(list);
+		solve_3(&list);
 	else if (len == 4)
-		solve_4(list);
+		solve_4(&list, &stack_b);
 	else if (len == 5)
-		solve_5(list);
+		solve_5(&list, &stack_b);
+	//free(list);
 	return (0);
 }
 
@@ -66,9 +69,8 @@ int	main(int ac, char **av)
 	int i = 0;
 	while (i < 5)
 	{
-		printf("%i\n", head->value);
+		printf("%i\n",find_min_value(head));
 		i++;
 	}
 	return (0); 
-}
-*/
+} */

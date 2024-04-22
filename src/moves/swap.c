@@ -12,19 +12,21 @@
 
 #include "push_swap.h"
 
-t_dll	*swap_op(t_dll *node1)
+t_dll	**swap_op(t_dll **node1)
 {
-	int	tmp;
+	t_dll	*head;
+	int		tmp_value;
 
-	tmp = node1->value;
-	node1->value = node1->next->value;
-	node1->next->value = tmp;
+	head = *node1;
+	tmp_value = head->value;
+	head->value = head->next->value;
+	head->next->value = tmp_value;
 	return (node1);
 }
 
-t_dll	*swap(t_dll *stack_a, t_dll **stack_b, int flag)
+t_dll	**swap(t_dll **stack_a, t_dll **stack_b, int flag)
 {
-	t_dll	*stack_res;
+	t_dll	**stack_res;
 
 	if (flag == MOVE_A)
 	{
@@ -33,14 +35,14 @@ t_dll	*swap(t_dll *stack_a, t_dll **stack_b, int flag)
 	}
 	else if (flag == MOVE_B)
 	{
-		stack_res = swap_op(*stack_b);
+		stack_res = swap_op(stack_b);
 		return (write(1, "sb\n", 3), stack_res);
 	}
 	else if (flag == MOVE_BOTH)
 	{
 		stack_a = swap_op(stack_a);
-		*stack_b = swap_op(*stack_b);
+		stack_b = swap_op(stack_b);
 		return (write(1, "ss\n", 3), stack_a);
 	}
-	return (0);
+	return (NULL);
 }

@@ -14,17 +14,22 @@
 
 void	dll_add_front(t_dll **lst, t_dll *new)
 {
-	if (!*lst)
+	t_dll	*head;
+
+	head = *lst;
+	if (!lst || !new)
+		return ;
+	if (!(*lst))
 	{
 		new->prev = NULL;
 		new->next = NULL;
+		new->index = 0;
 		*lst = new;
 		return ;
 	}
-	if (!new)
-		return ;
-	new->next = *lst;
-	(*lst)->prev = new;
+	new->next = head;
 	new->prev = NULL;
+	new->index = 0;
 	*lst = new;
+	set_index(lst);
 }

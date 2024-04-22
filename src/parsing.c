@@ -27,6 +27,7 @@ t_dll	*get_list_head(char **mtx)
 			return (dll_clear(&head), NULL);
 		list->index = i;
 		dll_add_back(&head, list);
+		//dll_clear(&list);
 		i++;
 	}
 	return (free_mtx(mtx), head);
@@ -44,7 +45,7 @@ t_dll	*parse_input_string(int ac, char **av)
 		return (free_mtx(mtx), ft_printf("Error\n"), NULL);
 	head = get_list_head(mtx);
 	if (!head)
-		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), NULL);
+		return (dll_clear(&head), ft_printf("Error\n"), NULL);
 	return (head);
 }
 
