@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_dll	*get_list_head(char **mtx)
+t_dll	*set_list_head(char **mtx)
 {
 	t_dll	*list;
 	t_dll	*head;
@@ -43,13 +43,13 @@ t_dll	*parse_input_string(int ac, char **av)
 	mtx = ft_split(av[1], ' ');
 	if (!mtx || !mtx_check(mtx))
 		return (free_mtx(mtx), ft_printf("Error\n"), NULL);
-	head = get_list_head(mtx);
+	head = set_list_head(mtx);
 	if (!head)
 		return (dll_clear(&head), ft_printf("Error\n"), NULL);
 	return (head);
 }
 
-t_dll	*parse_input_args(int ac, char **av)
+t_dll	*parse_input_arguments(int ac, char **av)
 {
 	t_dll	*head;
 	char	**mtx;
@@ -69,8 +69,24 @@ t_dll	*parse_input_args(int ac, char **av)
 		mtx[i] = ft_strdup(av[i]);
 		i++;
 	}
-	head = get_list_head(mtx);
+	head = set_list_head(mtx);
 	if (!head)
 		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), NULL);
 	return (head);
+}
+
+t_dll	*init_stack(int ac, char **av)
+{
+	t_dll	*stack_a;
+
+	stack_a = (t_dll *){0};
+	if (ac < 2 || !av[1] || !av[1][0])
+		return (0);
+	if (ac == 2)
+		stack_a = parse_input_string(ac, av);
+	else if (ac > 2)
+		stack_a = parse_input_arguments(ac, &av[1]);
+	if ((stack_a && is_sorted(stack_a)) || !stack_a)
+		return (0);
+	return (stack_a);
 }

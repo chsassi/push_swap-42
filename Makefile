@@ -1,8 +1,8 @@
 NAME = push_swap
 
 CC = cc
-HEADER = ./libft.plus/headers
-CFLAGS = -Wextra -Werror -Wall -g -I$(HEADER)
+INCLUDES = ./includes
+CFLAGS = -Wextra -Werror -Wall -g -I$(INCLUDES)
 COMPILE = $(CC) $(CFLAGS) -c
 ARCHIVE = ar rc $(NAME)
 
@@ -15,7 +15,7 @@ YELLOW=\033[0;33m
 RESET=\033[0m
 
 SRC =   ./src/main.c \
-		./src/algo.c \
+		./src/minisort.c \
 		./src/parsing.c \
 		./src/utils.c \
 		./src/moves/swap.c \
@@ -31,7 +31,7 @@ libft:
 	make all -C $(LIBFT_DIR)
 
 $(NAME): libft $(OBJ)
-	$(CC) $(CFLAGS) -I. -I$(HEADER) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) -I. -I$(INCLUDES) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(GREEN)	PUSH SWAP COMPILED! 🧮✅$(RESET)"
 
 RM = rm -f

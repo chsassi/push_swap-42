@@ -16,27 +16,28 @@ int	find_move(t_dll *pStack)
 {
 	int		head_value;
 	int		middle_value;
-	int		last_value;
+	int		tail_value;
 	int		min_value;
 	int		max_value;
 
 	head_value = pStack->value;
 	middle_value = pStack->next->value;
-	last_value = pStack->next->next->value;
+	tail_value = pStack->next->next->value;
 	min_value = find_min_value(pStack);
 	max_value = find_max_value(pStack);
-	if ((middle_value == max_value && head_value == min_value)
-		|| (middle_value == min_value && last_value == max_value)
+	if (middle_value == min_value
+		|| (middle_value == max_value && head_value == min_value)
+		|| (middle_value == min_value && tail_value == max_value)
 		|| (middle_value != min_value && middle_value != max_value))
 		return (SWAP);
 	if (middle_value == min_value && head_value == max_value)
 		return (ROTATE);
-	else if (middle_value == max_value && last_value == min_value)
+	else if (middle_value == max_value && tail_value == min_value)
 		return (R_ROTATE);
 	return (STAY);
 }
 
-t_dll	**solve_3(t_dll **pStack)
+t_dll	**sort_3(t_dll **pStack)
 {
 	if (!pStack || !(*pStack))
 		return (NULL);
@@ -51,20 +52,20 @@ t_dll	**solve_3(t_dll **pStack)
 	return (pStack);
 }
 
-/* t_dll	**solve_3(t_dll **pStack)
+/* t_dll	**sort_3(t_dll **pStack)
 {
 	int		head_value;
 	int		middle_value;
-	int		last_value;
+	int		tail_value;
 
 	head_value = (*pStack)->value;
 	middle_value = (*pStack)->next->value;
-	last_value = (*pStack)->next->next->value;
+	tail_value = (*pStack)->next->next->value;
 	if (is_sorted(*pStack))
 		return (pStack);
 	if (head_value > middle_value)
 	{
-		if (middle_value > last_value)
+		if (middle_value > tail_value)
 		{
 			pStack = rotate(pStack, NULL, MOVE_A);
 			pStack = swap(pStack, NULL, MOVE_A);
@@ -74,7 +75,7 @@ t_dll	**solve_3(t_dll **pStack)
 	}
 	else if (head_value < middle_value)
 	{
-		if (head_value < last_value)
+		if (head_value < tail_value)
 		{
 			pStack = swap(pStack, NULL, MOVE_A);
 			pStack = rotate(pStack, NULL, MOVE_A);
@@ -85,7 +86,7 @@ t_dll	**solve_3(t_dll **pStack)
 	return (pStack);
 } */
 
-t_dll	**solve_4(t_dll **pStack, t_dll **stack_b)
+t_dll	**sort_4(t_dll **pStack, t_dll **stack_b)
 {
 	int		i;
 
@@ -110,12 +111,12 @@ t_dll	**solve_4(t_dll **pStack, t_dll **stack_b)
 	if (is_sorted(*pStack))
 		return (pStack);
 	pb(stack_b, pStack);
-	pStack = solve_3(pStack);
+	pStack = sort_3(pStack);
 	pa(pStack, stack_b);
 	return (pStack);
 }
 
-t_dll	**solve_5(t_dll **pStack, t_dll **stack_b)
+t_dll	**sort_5(t_dll **pStack, t_dll **stack_b)
 {
 	int		i;
 
@@ -138,7 +139,23 @@ t_dll	**solve_5(t_dll **pStack, t_dll **stack_b)
 		}
 	}
 	pb(stack_b, pStack);
-	pStack = solve_4(pStack, stack_b);
+	pStack = sort_4(pStack, stack_b);
 	pa(pStack, stack_b);
 	return (pStack);
+}
+
+void	minisort(t_dll *stack_a)
+{
+	t_dll	*stack_b;
+	int		len;
+
+	len = dll_size(stack_a);
+	if (len == 2 && stack_a->value > stack_a->next->value)
+		swap(&stack_a, &stack_b, MOVE_A);
+	else if (len == 3)
+		sort_3(&stack_a);
+	else if (len == 4)
+		sort_4(&stack_a, &stack_b);
+	else if (len == 5)
+		sort_5(&stack_a, &stack_b);
 }

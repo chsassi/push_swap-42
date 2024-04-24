@@ -14,28 +14,18 @@
 
 int	main(int ac, char **av)
 {
-	t_dll	*list;
-	t_dll	*stack_b;
+	t_dll	*stack_a;
 	int		len;
 
-	list = NULL;
-	stack_b = (t_dll *){0};
-	if (ac == 1 || !av[1] || !av[1][0])
-		return (0);
-	if (ac == 2)
-		list = parse_input_string(ac, av);
-	else if (ac > 2)
-		list = parse_input_args(ac, &av[1]);
-	if ((list && is_sorted(list)) || !list)
-		return (0);
-	len = dll_size(list);
-	if (len == 3)
-		solve_3(&list);
-	else if (len == 4)
-		solve_4(&list, &stack_b);
-	else if (len == 5)
-		solve_5(&list, &stack_b);
-	//free(list);
+	stack_a = (t_dll *){0};
+	len = 0;
+	stack_a = init_stack(ac, av);
+	len = dll_size(stack_a);
+	if (len <= 5)
+		minisort(stack_a);
+	else
+		print_stack(stack_a);
+	//free(stack_a);
 	return (0);
 }
 

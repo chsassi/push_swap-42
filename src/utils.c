@@ -74,3 +74,22 @@ int	mtx_check(char **mtx)
 		return (0);
 	return (1);
 }
+
+void print_stack(t_dll *pNode)
+{
+	t_dll	*current;
+	int		index;
+	int		value;
+
+	current = pNode;
+	index = 0;
+	while (current != NULL)
+	{
+		value = current->value;
+		ft_printf("[Node %i]-> %i\n", index, value);
+		current = current->next;
+		index++;
+	}
+	ft_printf("---------");
+	ft_printf("\n");
+}

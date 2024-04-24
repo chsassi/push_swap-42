@@ -28,24 +28,27 @@ typedef enum e_moves
 	SWAP
 }	t_moves;
 
-/* Algo */
+/* Minisort */
 
 int		find_move(t_dll *pStack);
-t_dll	**solve_3(t_dll **pStack);
-t_dll	**solve_4(t_dll **pStack, t_dll **stack_b);
-t_dll	**solve_5(t_dll **pStack, t_dll **stack_b);
+t_dll	**sort_3(t_dll **pStack);
+t_dll	**sort_4(t_dll **pStack, t_dll **stack_b);
+t_dll	**sort_5(t_dll **pStack, t_dll **stack_b);
+void	minisort(t_dll *pStack);
 
 /* Parsing */
 
-t_dll	*get_list_head(char **mtx);
+t_dll	*set_list_head(char **mtx);
 t_dll	*parse_input_string(int ac, char **av);
-t_dll	*parse_input_args(int ac, char **av);
+t_dll	*parse_input_arguments(int ac, char **av);
+t_dll	*init_stack(int ac, char **av);
 
 /* Utils */
 
 int		check_duplicates(char **mtx);
 int		is_sorted(t_dll *pStack);
 int		mtx_check(char **mtx);
+void	print_stack(t_dll *pNode);
 
 /* Moves */
 

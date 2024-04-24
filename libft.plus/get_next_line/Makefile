@@ -1,9 +1,9 @@
 NAME = libgnl.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(HEADERS)
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES)
 COMPILE = $(CC) $(CFLAGS) -c
 ARCHIVE = ar rc $(NAME)
-HEADERS = ../headers
+INCLUDES = ../../includes
 
 GREEN=\033[0;32m
 RED=\033[0;31m
