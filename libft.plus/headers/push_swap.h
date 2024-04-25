@@ -28,6 +28,17 @@ typedef enum e_moves
 	SWAP
 }	t_moves;
 
+typedef struct s_bestmoves
+{
+	int	rot_a;
+	int	rot_b;
+	int	rot_both;
+	int	r_rot_a;
+	int	r_rot_b;
+	int	r_rot_both;
+	int	tot_moves;
+}		t_bestmoves;
+
 /* Algo */
 
 int		find_move(t_dll *pStack);
@@ -43,9 +54,11 @@ t_dll	*parse_input_args(int ac, char **av);
 
 /* Utils */
 
-int		check_duplicates(char **mtx);
-int		is_sorted(t_dll *pStack);
-int		mtx_check(char **mtx);
+int			check_duplicates(char **mtx);
+int			is_sorted(t_dll *pStack);
+int			mtx_check(char **mtx);
+t_bestmoves	bestmoves_cpy(t_bestmoves moves);
+t_bestmoves	bestmoves_operations(t_bestmoves moves, int flag_move);
 
 /* Moves */
 
