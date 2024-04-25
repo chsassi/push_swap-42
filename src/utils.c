@@ -105,5 +105,5 @@ t_bestmoves	bestmoves_operations(t_bestmoves moves, int flag_move)
 	if (flag_move == STAY)
 		moves.tot_moves = moves.r_rot_a + moves.r_rot_b + moves.r_rot_both \
 			+ moves.r_rot_a + moves.rot_b + moves.rot_both;
-	return (moves)
+	return (moves);
 }
