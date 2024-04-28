@@ -1,4 +1,4 @@
-NAME = push_swap
+NAME = checker
 
 CC = cc
 INCLUDES = ./includes
@@ -14,18 +14,7 @@ BLUE=\033[0;34m
 YELLOW=\033[0;33m
 RESET=\033[0m
 
-SRC =	./src/algo.c \
-		./src/minisort.c \
-		./src/find_bestmoves.c \
-		./src/lis.c \
-		./src/parsing.c \
-		./src/moves/push.c \
-		./src/moves/r-rotate.c \
-		./src/moves/rotate.c \
-		./src/moves/swap.c \
-		./src/algo_utils.c \
-		./src/utils.c \
-		./src/main.c 
+SRC =	./src/main.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -36,7 +25,7 @@ libft:
 
 $(NAME): libft $(OBJ)
 	$(CC) $(CFLAGS) -I. -I$(INCLUDES) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
-	@echo "$(GREEN)	PUSH SWAP COMPILED! 🧮✅$(RESET)"
+	@echo "$(GREEN)	CHECKER COMPILED! 🧮✅$(RESET)"
 
 RM = rm -f
 

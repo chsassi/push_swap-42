@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brulutaj <brulutaj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsassi <chsassi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 19:16:28 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/19 20:41:08 by brulutaj         ###   ########.fr       */
+/*   Updated: 2024/04/28 18:01:50 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,10 @@
 
 int	main(int ac, char **av)
 {
-	t_dll	*list;
-	t_dll	*stack_b;
-	int		len;
+	t_dll	*stack_a;
 
-	list = NULL;
-	stack_b = (t_dll *){0};
-	if (ac == 1 || !av[1] || !av[1][0])
-		return (0);
-	if (ac == 2)
-		list = parse_input_string(ac, av);
-	else if (ac > 2)
-		list = parse_input_args(ac, &av[1]);
-	if ((list && is_sorted(list)) || !list)
-		return (0);
-	len = dll_size(list);
-	if (len == 3)
-		solve_3(&list);
-	else if (len == 4)
-		solve_4(&list, &stack_b);
-	else if (len == 5)
-		solve_5(&list, &stack_b);
-	//free(list);
+	stack_a = parse_input(ac, av);
+	solver(&stack_a);
+	dll_clear(&stack_a);
 	return (0);
 }
-
-/* int main()
-{
-	t_dll *head;
-	t_dll *n1;
-	t_dll *n2;
-	t_dll *n3;
-	t_dll *n4;
-	t_dll *n5;
-
-	head = NULL;
-
-	n1 = dll_new(10);
-	n1->index = 0;
-	dll_add_back(&head, n1);
-	n2 = dll_new(2);
-	n2->index = 1;
-	dll_add_back(&head, n2);
-	n3 = dll_new(5);
-	n3->index = 2;
-	dll_add_back(&head, n3);
-	n4 = dll_new(-1);
-	n4->index = 3;
-	dll_add_back(&head, n4);
-	n5 = dll_new(8);
-	n5->index = 4;
-	dll_add_back(&head, n5);
-	//head = solve_5(head);
-	int i = 0;
-	while (i < 5)
-	{
-		printf("%i\n",find_min_value(head));
-		i++;
-	}
-	return (0); 
-} */

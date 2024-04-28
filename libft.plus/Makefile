@@ -1,7 +1,7 @@
 NAME = libft.a
 CC = cc
-HEADERS = ./headers
-CFLAGS = -Wall -Wextra -Werror -I$(HEADERS)
+INCLUDES = ../includes
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES)
 COMPILE = $(CC) $(CFLAGS) -c -g
 ARCHIVE = ar rc $(NAME)
 

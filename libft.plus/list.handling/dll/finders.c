@@ -34,11 +34,9 @@ int	find_min_index(t_dll *pStack)
 
 int	find_min_value(t_dll *pStack)
 {
-	int		i;
 	int		min;
 	t_dll	*ptr;
 
-	i = 0;
 	min = INT_MAX;
 	ptr = pStack;
 	while (ptr)
@@ -72,12 +70,10 @@ int	find_max_index(t_dll *pStack)
 
 int	find_max_value(t_dll *pStack)
 {
-	int		i;
 	int		max;
 	t_dll	*ptr;
 
 	max = INT_MIN;
-	i = 0;
 	ptr = pStack;
 	while (ptr)
 	{
