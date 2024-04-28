@@ -18,6 +18,8 @@ int	main(int ac, char **av)
 
 	stack_a = parse_input(ac, av);
 	solver(&stack_a);
+	// if (!is_sorted(stack_a))
+	// 	printf("AEEEEEEEE");
 	dll_clear(&stack_a);
 	return (0);
 }
