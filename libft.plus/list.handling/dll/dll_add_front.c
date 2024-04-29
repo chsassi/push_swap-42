@@ -19,7 +19,7 @@ void	dll_add_front(t_dll **lst, t_dll *new)
 	head = *lst;
 	if (!lst || !new)
 		return ;
-	if (!(*lst))
+	if (!head)
 	{
 		new->prev = NULL;
 		new->next = NULL;

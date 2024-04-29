@@ -17,6 +17,8 @@ void	swap_op(t_dll **node1)
 	t_dll	*head;
 	int		tmp_value;
 
+	if (dll_size(*node1) == 1)
+		return ;	
 	head = *node1;
 	tmp_value = head->value;
 	head->value = head->next->value;

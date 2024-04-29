@@ -18,6 +18,8 @@ void	rotate_op(t_dll **stack)
 	t_dll	*last;
 	t_dll	*second;
 
+	if (dll_size(*stack) == 1)
+		return ;	
 	head = *stack;
 	last = dll_last(head);
 	second = head->next;

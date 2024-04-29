@@ -111,7 +111,6 @@ void	minisort(t_dll **stack_a, t_dll **stack_b)
 	int		len;
 
 	len = dll_size(*stack_a);
-	stack_b = NULL;
 	if (len == 2 && (*stack_a)->value > (*stack_a)->next->value)
 		swap(stack_a, NULL, MOVE_A);
 	else if (len == 3)
