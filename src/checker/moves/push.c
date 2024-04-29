@@ -7,7 +7,7 @@ void	checker_pa(t_dll **stack_a, t_dll **stack_b)
 	if (dll_size(*stack_b) == 1)
 	{
 		dll_add_front(stack_a, *stack_b);
-		stack_b = NULL;
+		*stack_b = NULL;
 		return ;
 	}
 	b_tmp = (*stack_b)->next;
@@ -24,7 +24,7 @@ void	checker_pb(t_dll **stack_b, t_dll **stack_a)
 	if (dll_size(*stack_a) == 1)
 	{
 		dll_add_front(stack_b, *stack_a);
-		stack_a = NULL;
+		*stack_a = NULL;
 		return ;
 	}
 	a_tmp = (*stack_a)->next;

@@ -1,7 +1,7 @@
 NAME = libgnl.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES)
-COMPILE = $(CC) $(CFLAGS) -c
+CFLAGS = -Wall -Wextra -Werror -g -I$(INCLUDES)
+COMPILE = $(CC) $(CFLAGS) -c 
 ARCHIVE = ar rc $(NAME)
 INCLUDES = ../../includes
 

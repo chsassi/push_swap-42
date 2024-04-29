@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include "checker.h"
 # include <limits.h>
 
 typedef enum e_moves

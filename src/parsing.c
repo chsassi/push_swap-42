@@ -22,8 +22,8 @@ t_dll	*get_list_head(char **mtx)
 	i = 0;
 	while (mtx && mtx[i])
 	{
-		list = dll_new(ft_atoi(mtx[i]));
-		if (!list)
+		list = dll_new(ft_atol(mtx[i]));
+		if (!list || (long)list->value > INT_MAX)
 			return (dll_clear(&head), NULL);
 		list->index = i;
 		dll_add_back(&head, list);

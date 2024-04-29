@@ -1,8 +1,8 @@
 NAME = libft.a
 CC = cc
 INCLUDES = ../includes
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES)
-COMPILE = $(CC) $(CFLAGS) -c -g
+CFLAGS = -Wall -Wextra -Werror -g -I$(INCLUDES)
+COMPILE = $(CC) $(CFLAGS) -c 
 ARCHIVE = ar rc $(NAME)
 
 CHAR_HAND = ./char.handling

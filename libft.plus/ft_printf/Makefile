@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES)
+CFLAGS = -Wall -Wextra -Werror -g -I$(INCLUDES)
 COMPILE = $(CC) $(CFLAGS) -c
 ARCHIVE = ar rc $(NAME)
 INCLUDES = ../../includes

@@ -3,7 +3,7 @@ NAME = checker
 CC = cc
 INCLUDES = ../../includes
 CFLAGS = -Wextra -Werror -Wall -g -I$(INCLUDES)
-COMPILE = $(CC) $(CFLAGS) -c
+COMPILE = $(CC) $(CFLAGS) -c 
 ARCHIVE = ar rc $(NAME)
 
 LIBFT_DIR = ../../libft.plus
@@ -29,6 +29,7 @@ SRC =	../algo.c \
 		./moves/r-rotate.c \
 		./moves/rotate.c \
 		./moves/swap.c \
+		./checker_parsing.c \
 		./checker_main.c
 
 OBJ = $(SRC:.c=.o)

@@ -53,6 +53,12 @@ static void	read_until_nl(int fd, char **res, char **waste, int bytes)
 			break ;
 	}
 	free(line);
+	if (waste[fd][0] == '\0')
+	{
+		free(waste[fd]);
+		waste[fd] = NULL;
+		return ;
+	}
 }
 
 char	*gnl(int fd)
@@ -70,6 +76,11 @@ char	*gnl(int fd)
 	{
 		tmp = strjoin_gnl(&waste[fd], NULL);
 		bytes = !ft_find_nl(&res, &waste[fd], tmp, 1);
+		if (!bytes)
+		{
+			free(waste[fd]);
+			return (NULL);
+		}
 		free(tmp);
 	}
 	read_until_nl(fd, &res, &waste[fd], bytes);

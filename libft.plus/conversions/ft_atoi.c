@@ -13,9 +13,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	n;
+	int		i;
+	int		sign;
+	int		n;
 
 	i = 0;
 	sign = 1;
@@ -37,8 +37,8 @@ int	ft_atoi(const char *str)
 	return (n * sign);
 }
 
-/*int		main(void)
+/* int		main(void)
 {
-	char	str[] = "    -12345ab";
+	char	str[] = "21474836482232";
 	printf("Atoi:	%i", ft_atoi(str));
-}*/
+} */
