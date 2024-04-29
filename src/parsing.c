@@ -17,13 +17,17 @@ t_dll	*get_list_head(char **mtx)
 	t_dll	*list;
 	t_dll	*head;
 	int		i;
+	long	nl;
 
 	head = NULL;
 	i = 0;
 	while (mtx && mtx[i])
 	{
-		list = dll_new(ft_atol(mtx[i]));
-		if (!list || (long)list->value > INT_MAX)
+		nl = ft_atol(mtx[i]);
+		if (nl > INT_MAX || nl < INT_MIN)
+			return (dll_clear(&head), NULL);
+		list = dll_new(nl);
+		if (!list)
 			return (dll_clear(&head), NULL);
 		list->index = i;
 		dll_add_back(&head, list);

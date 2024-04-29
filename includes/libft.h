@@ -51,7 +51,7 @@ int		find_max_index(t_dll *pStack);
 int		find_max_value(t_dll *pStack);
 void	set_index(t_dll **list);
 
-int		ft_atol(const char *str);
+long		ft_atol(const char *str);
 
 /**
  * @brief Converts a string to an integer.
