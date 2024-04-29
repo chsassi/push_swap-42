@@ -1,39 +1,41 @@
 #include "push_swap.h"
 
-static void	check_str(t_dll **stack_a, t_dll **stack_b, char *str)
+static int	check_str(t_dll **stack_a, t_dll **stack_b, char *str)
 {
 	if (!ft_strncmp("sa\n", str, 3))
-		checker_swap(stack_a, stack_b, MOVE_A);
+		return (checker_swap(stack_a, stack_b, MOVE_A), 0);
 	else if (!ft_strncmp("ra\n", str, 3))
-		checker_rotate(stack_a, stack_b, MOVE_A);
+		return (checker_rotate(stack_a, stack_b, MOVE_A), 0);
 	else if (!ft_strncmp("rra\n", str, 4))
-		checker_r_rotate(stack_a, stack_b, MOVE_A);
+		return (checker_r_rotate(stack_a, stack_b, MOVE_A), 0);
 	else if (!ft_strncmp("pa\n", str, 3))
-		checker_pa(stack_a, stack_b);
+		return (checker_pa(stack_a, stack_b), 0);
 	else if (!ft_strncmp("sb\n", str, 3))
-		checker_swap(stack_a, stack_b, MOVE_B);
+		return (checker_swap(stack_a, stack_b, MOVE_B), 0);
 	else if (!ft_strncmp("rb\n", str, 3))
-		checker_rotate(stack_a, stack_b, MOVE_B);
+		return (checker_rotate(stack_a, stack_b, MOVE_B), 0);
 	else if (!ft_strncmp("rrb\n", str, 4))
-		checker_r_rotate(stack_a, stack_b, MOVE_B);
+		return (checker_r_rotate(stack_a, stack_b, MOVE_B), 0);
 	else if (!ft_strncmp("pb\n", str, 3))
-		checker_pb(stack_b, stack_a);
+		return (checker_pb(stack_b, stack_a), 0);
 	else if (!ft_strncmp("ss\n", str, 3))
-		checker_swap(stack_a, stack_b, MOVE_BOTH);
+		return (checker_swap(stack_a, stack_b, MOVE_BOTH), 0);
 	else if (!ft_strncmp("rr\n", str, 3))
-		checker_rotate(stack_a, stack_b, MOVE_BOTH);
+		return (checker_rotate(stack_a, stack_b, MOVE_BOTH), 0);
 	else if (!ft_strncmp("rrr\n", str, 4))
-		checker_r_rotate(stack_a, stack_b, MOVE_BOTH);
+		return (checker_r_rotate(stack_a, stack_b, MOVE_BOTH), 0);
 	else
-		return ;
+		return (0);
 }
 
 int main(int ac, char **av)
 {
 	char	*str;
+	int		i;
 	t_dll	*stack_a;
 	t_dll	*stack_b;
 
+	i = 0;
 	stack_a = checker_parse_input(ac, av);
 	if (!stack_a)
 		return (0);
@@ -41,7 +43,9 @@ int main(int ac, char **av)
 	str = gnl(0);
 	while (str && ft_strncmp("\n", str, 3))
 	{
-		check_str(&stack_a, &stack_b, str);
+		i = check_str(&stack_a, &stack_b, str);
+		if (i == 0)
+			return (free(str), dll_clear(&stack_a), ft_printf("Error\n"), 0);
 		free(str);
 		str = gnl(0);
 	}
