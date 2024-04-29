@@ -1,4 +1,4 @@
-#include "checker.h"
+#include "push_swap.h"
 
 static void	check_str(t_dll **stack_a, t_dll **stack_b, char *str)
 {
@@ -33,13 +33,18 @@ int main(int ac, char **av)
 	t_dll	*stack_b;
 
 	stack_a = parse_input(ac, av);
-	str = gnl(0);
 	stack_b = NULL;
-	while (str)
+	str = NULL;
+	while (42)
 	{
+		str = gnl(0);
+		if (is_sorted(stack_a) || str == NULL)
+		{
+			free(str);
+			break ;
+		}
 		check_str(&stack_a, &stack_b, str);
 		free(str);
-		str = gnl(0);
 	}
 	if (is_sorted(stack_a) && !stack_b)
 		ft_printf("OK");
