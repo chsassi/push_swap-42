@@ -1,4 +1,5 @@
 NAME = push_swap
+NAME_BONUS = checker
 
 CC = cc
 INCLUDES = ./includes
@@ -26,9 +27,19 @@ SRC =	./src/algo.c \
 		./src/utils.c \
 		./src/main.c 
 
-OBJ = $(SRC:.c=.o)
+SRC_BONUS =	./src/parsing.c \
+			./src/utils.c \
+			./src/checker/moves/push.c \
+			./src/checker/moves/r-rotate.c \
+			./src/checker/moves/rotate.c \
+			./src/checker/moves/swap.c \
+			./src/checker/checker_parsing.c \
+			./src/checker/checker_main.c
 
-all: $(NAME)
+OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
+
+all: $(NAME) bonus
 
 libft:
 	make all -C $(LIBFT_DIR)
@@ -37,14 +48,20 @@ $(NAME): libft $(OBJ)
 	$(CC) $(CFLAGS) -I. -I$(INCLUDES) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(GREEN)	PUSH SWAP COMPILED! 🧮✅$(RESET)"
 
+bonus: $(OBJ_BONUS)
+	$(CC) $(CFLAGS) -I. -I$(INCLUDES) $(OBJ_BONUS) -L$(LIBFT_DIR) -lft -o $(NAME_BONUS)
+	@echo "$(GREEN)	CHECKER COMPILED! ✅$(RESET)"
+
 RM = rm -f
 
 clean:
 	$(RM) $(OBJ)
+	$(RM) $(OBJ_BONUS)
 	make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
 
 re: fclean all
