@@ -12,29 +12,6 @@
 
 #include "push_swap.h"
 
-t_bestmoves	check_moves_b(t_dll *stack_b, int value_b, t_bestmoves moves)
-{
-	int	index;
-	int	size;
-
-	index = 0;
-	size = dll_size(stack_b);
-	while (stack_b)
-	{
-		if (stack_b->value == value_b)
-		{
-			index = stack_b->index;
-			break ;
-		}
-		stack_b = stack_b->next;
-	}
-	if (index > (size - 1) / 2)
-		moves.r_rot_b = size - index;
-	else
-		moves.rot_b = index;
-	return (moves);
-}
-
 t_bestmoves	check_moves_a(t_dll *stack_a, int value_b, t_bestmoves moves)
 {
 	int	index;
@@ -61,6 +38,29 @@ t_bestmoves	check_moves_a(t_dll *stack_a, int value_b, t_bestmoves moves)
 		moves.r_rot_a = size - index;
 	else
 		moves.rot_a = index;
+	return (moves);
+}
+
+t_bestmoves	check_moves_b(t_dll *stack_b, int value_b, t_bestmoves moves)
+{
+	int	index;
+	int	size;
+
+	index = 0;
+	size = dll_size(stack_b);
+	while (stack_b)
+	{
+		if (stack_b->value == value_b)
+		{
+			index = stack_b->index;
+			break ;
+		}
+		stack_b = stack_b->next;
+	}
+	if (index > (size - 1) / 2)
+		moves.r_rot_b = size - index;
+	else
+		moves.rot_b = index;
 	return (moves);
 }
 

@@ -15,11 +15,22 @@
 int	main(int ac, char **av)
 {
 	t_dll	*stack_a;
+	t_dll	*stack_b;
+	int		len;
 
-	stack_a = parse_input(ac, av);
-	solver(&stack_a);
-	// if (!is_sorted(stack_a))
-	// 	printf("AEEEEEEEE");
+	stack_a = init_stack(ac, av);
+	stack_b = NULL;
+	len = dll_size(stack_a);
+	if (len <= 5)
+		minisort(&stack_a, &stack_b);
+	else
+	{
+		stack_b = get_stack_lis(&stack_a);
+		if (!stack_b)
+			return (0);
+		sort_all(&stack_a, &stack_b);
+	}
 	dll_clear(&stack_a);
 	return (0);
 }
+

@@ -78,7 +78,7 @@ t_dll	*parse_input_args(int ac, char **av)
 	return (head);
 }
 
-t_dll	*parse_input(int ac, char **av)
+t_dll	*init_stack(int ac, char **av)
 {
 	t_dll	*stack_a;
 

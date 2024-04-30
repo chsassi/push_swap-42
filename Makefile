@@ -23,7 +23,6 @@ SRC =	./src/algo.c \
 		./src/moves/r-rotate.c \
 		./src/moves/rotate.c \
 		./src/moves/swap.c \
-		./src/algo_utils.c \
 		./src/utils.c \
 		./src/main.c 
 
