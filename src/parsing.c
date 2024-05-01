@@ -44,7 +44,7 @@ t_dll	*parse_input_string(int ac, char *av)
 	(void)ac;
 	head = (t_dll *){0};
 	mtx = ft_split(av, ' ');
-	if (!mtx || !mtx_check(mtx))
+	if (!mtx || !*mtx || !mtx_check(mtx))
 		return (free_mtx(mtx), ft_printf("Error\n"), NULL);
 	head = get_list_head(mtx);
 	if (!head)
@@ -84,12 +84,12 @@ t_dll	*init_stack(int ac, char **av)
 
 	stack_a = NULL;
 	if (ac == 1 || !av[1] || !av[1][0])
-		return (0);
+		return (NULL);
 	if (ac == 2)
 		stack_a = parse_input_string(ac, av[1]);
 	else if (ac > 2)
 		stack_a = parse_input_args(ac, &av[1]);
 	if ((stack_a && is_sorted(stack_a)) || !stack_a)
-		return (0);
+		return (dll_clear(&stack_a), NULL);
 	return (stack_a);
 }

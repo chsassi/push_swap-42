@@ -33,4 +33,3 @@ int	main(int ac, char **av)
 	dll_clear(&stack_a);
 	return (0);
 }
-

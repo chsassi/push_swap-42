@@ -6,7 +6,7 @@
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:46:10 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/28 18:01:50 by chsassi          ###   ########.fr       */
+/*   Updated: 2024/05/01 17:46:11 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rotate_op(t_dll **stack)
 	t_dll	*second;
 
 	if (dll_size(*stack) == 1)
-		return ;	
+		return ;
 	head = *stack;
 	last = dll_last(head);
 	second = head->next;
