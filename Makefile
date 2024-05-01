@@ -39,7 +39,7 @@ SRC_BONUS =	./src/parsing.c \
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-all: $(NAME) bonus
+all: $(NAME)
 
 libft:
 	make all -C $(LIBFT_DIR)

@@ -1,3 +1,0 @@
-valgrind ./push_swap 2147483648
-    - 3 su 5 free
-./

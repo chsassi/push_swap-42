@@ -53,7 +53,7 @@ static void	read_until_nl(int fd, char **res, char **waste, int bytes)
 			break ;
 	}
 	free(line);
-	if (waste[fd][0] == '\0')
+	if (waste[fd] && waste[fd][0] == '\0')
 	{
 		free(waste[fd]);
 		waste[fd] = NULL;
