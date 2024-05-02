@@ -17,7 +17,7 @@ void	checker_swap_op(t_dll **stack_a)
 	t_dll	*head;
 	int		tmp_value;
 
-	if (dll_size(*stack_a) == 1)
+	if (!*stack_a || dll_size(*stack_a) == 1)
 		return ;
 	head = *stack_a;
 	tmp_value = head->value;

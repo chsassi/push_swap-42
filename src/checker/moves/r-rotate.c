@@ -18,7 +18,7 @@ void	checker_r_rotate_op(t_dll **stack)
 	t_dll	*last;
 	t_dll	*bef_last;
 
-	if (dll_size(*stack) == 1)
+	if (!*stack || dll_size(*stack) == 1)
 		return ;
 	head = *stack;
 	last = dll_last(head);
