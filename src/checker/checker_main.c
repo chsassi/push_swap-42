@@ -51,7 +51,7 @@ static void	read_move(t_dll **stack_a, t_dll **stack_b)
 			{
 				free(str);
 				dll_clear(stack_a);
-				write(1, "Error\n", 6);
+				write(2, "Error\n", 6);
 				exit(EXIT_SUCCESS);
 			}
 		free(str);

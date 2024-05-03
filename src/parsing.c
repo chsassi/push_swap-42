@@ -45,10 +45,10 @@ t_dll	*parse_input_string(int ac, char *av)
 	head = (t_dll *){0};
 	mtx = ft_split(av, ' ');
 	if (!mtx || !*mtx || !mtx_check(mtx))
-		return (free_mtx(mtx), ft_printf("Error\n"), NULL);
+		return (free_mtx(mtx), write(2, "Error\n", 6), NULL);
 	head = get_list_head(mtx);
 	if (!head)
-		return (free_mtx(mtx), dll_clear(&head), ft_printf("Error\n"), NULL);
+		return (free_mtx(mtx), dll_clear(&head), write(2, "Error\n", 6), NULL);
 	return (head);
 }
 
@@ -63,7 +63,7 @@ t_dll	*parse_input_args(int ac, char **av)
 	mtx = NULL;
 	i = 0;
 	if (!mtx_check(av))
-		return (ft_printf("Error\n"), NULL);
+		return (write(2, "Error\n", 6), NULL);
 	mtx = ft_calloc(ac, sizeof(char *));
 	if (!mtx)
 		return (free_mtx(mtx), NULL);
@@ -74,7 +74,7 @@ t_dll	*parse_input_args(int ac, char **av)
 	}
 	head = get_list_head(mtx);
 	if (!head)
-		return (dll_clear(&head), free_mtx(mtx), ft_printf("Error\n"), NULL);
+		return (dll_clear(&head), free_mtx(mtx), write(2, "Error\n", 6), NULL);
 	return (head);
 }
 
