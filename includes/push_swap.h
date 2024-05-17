@@ -85,7 +85,7 @@ int			mtx_check(char **mtx);
 t_bestmoves	bestmoves_cpy(t_bestmoves moves);
 t_bestmoves	bestmoves_operations(t_bestmoves moves, int flag_move);
 
-/* Moves */
+/* Moves/.. */
 
 void		swap_op(t_dll **node1);
 void		swap(t_dll **stack_a, t_dll **stack_b, int flag);
