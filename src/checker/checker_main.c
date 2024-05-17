@@ -48,12 +48,12 @@ static void	read_move(t_dll **stack_a, t_dll **stack_b)
 	while (str && ft_strncmp("\n", str, 3))
 	{
 		if (!check_str(stack_a, stack_b, str))
-			{
-				free(str);
-				dll_clear(stack_a);
-				write(2, "Error\n", 6);
-				exit(EXIT_SUCCESS);
-			}
+		{
+			free(str);
+			dll_clear(stack_a);
+			write(2, "Error\n", 6);
+			exit(EXIT_SUCCESS);
+		}
 		free(str);
 		str = gnl(0);
 	}
