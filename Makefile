@@ -30,8 +30,8 @@ SRC =	./src/algo.c \
 SRC_BONUS =	./src/parsing.c \
 			./src/utils.c \
 			./src/checker/moves/push.c \
-			./src/checker/moves/r-rotate.c \
 			./src/checker/moves/rotate.c \
+			./src/checker/moves/r-rotate.c \
 			./src/checker/moves/swap.c \
 			./src/checker/checker_parsing.c \
 			./src/checker/checker_main.c
