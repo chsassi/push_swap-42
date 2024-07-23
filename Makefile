@@ -48,7 +48,7 @@ $(NAME): libft $(OBJ)
 	$(CC) $(CFLAGS) -I. -I$(INCLUDES) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(GREEN)	PUSH SWAP COMPILED! 🧮✅$(RESET)"
 
-bonus: $(OBJ_BONUS)
+bonus: libft $(OBJ_BONUS)
 	$(CC) $(CFLAGS) -I. -I$(INCLUDES) $(OBJ_BONUS) -L$(LIBFT_DIR) -lft -o $(NAME_BONUS)
 	@echo "$(GREEN)	CHECKER COMPILED! ✅$(RESET)"
 
