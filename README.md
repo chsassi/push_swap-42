@@ -25,13 +25,23 @@ Operations
 The project restricts you to a set of operations to manipulate the stack, which include:
 
 sa: Swap the first two elements of stack A.
+
 sb: Swap the first two elements of stack B.
+
 ss: Perform sa and sb at the same time.
+
 pa: Push the top element from stack B to stack A.
+
 pb: Push the top element from stack A to stack B.
+
 ra: Rotate all elements in stack A up by one.
+
 rb: Rotate all elements in stack B up by one.
+
 rr: Perform ra and rb at the same time.
+
 rra: Reverse rotate all elements in stack A down by one.
+
 rrb: Reverse rotate all elements in stack B down by one.
+
 rrr: Perform rra and rrb at the same time.
